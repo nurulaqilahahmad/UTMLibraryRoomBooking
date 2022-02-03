@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "164804352023",
+    "project_id": "utmlibrary",
+    "storage_bucket": "utmlibrary.appspot.com"
+  },
+  "scripts": {
+    "server": "json-server --host 10.211.97.218 db.json",
+    "localhost": "json-server --host localhost db.json"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164804352023:android:c00920a07e6283e4b32452",
+        "android_client_info": {
+          "package_name": "com.example.librarybooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164804352023-clqc0tcqr80o06u09u08cff6q21iv43k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkzsUnwcpu-unUb5J87MGmol_rb_xY8NA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164804352023-clqc0tcqr80o06u09u08cff6q21iv43k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
