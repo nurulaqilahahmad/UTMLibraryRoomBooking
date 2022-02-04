@@ -72,7 +72,7 @@ class RoomListTile extends StatelessWidget {
                     )
                   : ListTile(
                       title: Image(
-                          image: AssetImage('assets/notavailable.jpg'),
+                          image: AssetImage('${room.image}'),
                           width: 149.0,
                           height: 149.0),
                       subtitle: Column(

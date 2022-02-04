@@ -11,7 +11,7 @@ import '../../models/room.dart';
 
 class RoomServiceFirestore extends RoomService {
   // static const String _userId = 'hm2leHyBDdYoMxF8hyqceJrs9rF2';
-  // String get _userId => user.id;
+  String get _userId => user.uid;
   final _idGenerator = Uuid();
   final _firestore = Firestore();
 

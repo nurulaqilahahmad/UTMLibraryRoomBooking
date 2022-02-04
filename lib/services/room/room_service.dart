@@ -3,7 +3,6 @@ import 'dart:async';
 import '../../app/service_locator.dart';
 import '../user/user_repository.dart';
 import '../../models/user.dart';
-import '../../models/booking.dart';
 import '../../models/room.dart';
 
 abstract class RoomService {
