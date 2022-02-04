@@ -1,7 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'room.dart';
-
 class Booking {
   final dynamic id;
   final String date;

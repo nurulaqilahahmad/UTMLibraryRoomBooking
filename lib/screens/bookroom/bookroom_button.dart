@@ -18,7 +18,9 @@ class BookRoomButton extends StatelessWidget {
             primary: Colors.red[900],
           ),
           child: Text('BOOK'),
-          onPressed: () => state.onBook(viewmodel),
+          onPressed: () {
+            state.onBook(viewmodel);
+          },
         ),
         const SizedBox(width: 10.0),
         ElevatedButton(

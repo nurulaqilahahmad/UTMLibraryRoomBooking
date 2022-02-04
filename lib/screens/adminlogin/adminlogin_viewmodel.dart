@@ -21,12 +21,14 @@ class AdminLoginViewmodel extends Viewmodel {
 
   Future<void> login(
       {@required String email, @required String password}) async {
-    await _userRepository.signIn(email: email, password: password);
-    if (_userRepository.user != null) {
-      _errorMessage = null;
-    } else {
-      // _errorMessage = _userRepository.error;
-      _errorMessage = "ERROR! Try again.";
+    if (email.endsWith('@utm.my') == true) {
+      await _userRepository.signIn(email: email, password: password);
+      if (_userRepository.user != null) {
+        _errorMessage = null;
+      } else {
+        // _errorMessage = _userRepository.error;
+        _errorMessage = "ERROR! Try again.";
+      }
     }
   }
 }

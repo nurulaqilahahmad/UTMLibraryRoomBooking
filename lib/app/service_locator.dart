@@ -12,8 +12,6 @@ import '../screens/history/history_viewmodel.dart';
 import '../screens/home/home_viewmodel.dart';
 import '../screens/profile/profile_viewmodel.dart';
 import '../screens/updatebooking/updatebooking_viewmodel.dart';
-import '../services/all_bookings/all_bookings_service.dart';
-import '../services/all_bookings/all_bookings_service_firestore.dart';
 import '../services/booking/booking_service.dart';
 import '../services/booking/booking_service_firestore.dart';
 import '../services/user/user_repository.dart';
@@ -30,8 +28,6 @@ void initializeServiceLocator() {
   locator.registerLazySingleton<RoomService>(() => RoomServiceFirestore());
   locator
       .registerLazySingleton<BookingService>(() => BookingServiceFirestore());
-  locator.registerLazySingleton<AllBookingsService>(
-      () => AllBookingsServiceFirestore());
 
   // Repositories
   locator.registerLazySingleton<UserRepository>(() => UserRepository());

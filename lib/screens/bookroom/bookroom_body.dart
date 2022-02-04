@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import '../view.dart';
+import 'available_room_list_tile.dart';
 import 'bookroom_screen.dart';
 import 'bookroom_viewmodel.dart';
 import 'bookroom_button.dart';
@@ -9,8 +10,6 @@ class BookRoomBody extends StatelessWidget {
   final BookRoomScreenState _state;
 
   BookRoomBody(this._state);
-
-  int _value = 1;
   String current;
 
   @override
@@ -25,6 +24,7 @@ class BookRoomBody extends StatelessWidget {
                   children: [
                     Text(
                       "Book A Room",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 26.0,
@@ -39,7 +39,29 @@ class BookRoomBody extends StatelessWidget {
                     _bookroom(
                         'Room', 'eg: Discussion Room', _state.roomController),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
+                    ),
+                    Card(
+                      color: Colors.white,
+                      child: ListTile(
+                        title: Text('Room List', textAlign: TextAlign.center,),
+                        subtitle: Expanded(
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisExtent: 20,
+                            ),
+                            itemCount: viewmodel.dataCount,
+                            itemBuilder: (context, index) =>
+                                AvailableRoomListTile(index),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
                     ),
                     BookRoomButton(
                       viewmodel: viewmodel,

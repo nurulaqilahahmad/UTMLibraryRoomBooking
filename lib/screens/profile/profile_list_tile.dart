@@ -52,28 +52,4 @@ class ProfileListTile extends StatelessWidget {
               ],
             ));
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SelectorView<ProfileViewmodel, User>(
-  //     showProgressIndicator: false,
-  //     selector: (context, vm) => vm.getUser(_index),
-  //     builder: (context, vm, booking, __) => ListTile(
-  //       title: Text('${}'),
-  //       subtitle: Text(),
-  // subtitle:
-  //     Text('Tap to change number randomly and long pressed to delete'),
-  // // Delete an item on long press
-  // onLongPress: () => showSnackBarWhenError(
-  //     context, () => vm.removeBooking(vm.getBooking(_index).id)),
-
-  // Update to a new random number on tap
-  // onTap: () => showSnackBarWhenError(
-  //     context,
-  //     () => vm.updateBooking(
-  //         id: vm.getBooking(_index).id,
-  //         data: Booking(value: rnd.nextInt(200)))),
-  //     ),
-  //   );
-  // }
 }

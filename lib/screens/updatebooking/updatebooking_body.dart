@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:setup_mvvm/screens/history/history_view.dart';
+import 'available_room_list_tile.dart';
 import '../view.dart';
-import 'updatebooking_button.dart';
 import 'updatebooking_screen.dart';
 import 'updatebooking_viewmodel.dart';
 import '../../models/booking.dart';
@@ -43,8 +43,30 @@ class UpdateBookingBody extends StatelessWidget {
                   _updateBooking(
                       'Room', '${booking.room}', _state.roomController),
                   SizedBox(
-                    height: 30.0,
+                    height: 10.0,
                   ),
+                  Card(
+                      color: Colors.white,
+                      child: ListTile(
+                        title: Text('Room List', textAlign: TextAlign.center,),
+                        subtitle: Expanded(
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisExtent: 20,
+                            ),
+                            itemCount: vm.roomDataCount,
+                            itemBuilder: (context, index) =>
+                                AvailableRoomListTile(index),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -139,7 +161,7 @@ Widget _updateBooking(String title, String hint, TextEditingController state) {
         decoration: InputDecoration(
           hintText: hint,
         ),
-        controller: state,
+        controller: state == null ? hint : state, 
       ),
       SizedBox(
         height: 10.0,

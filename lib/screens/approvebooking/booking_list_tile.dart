@@ -24,20 +24,40 @@ class BookingListTile extends StatelessWidget {
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                   child: ListTile(
                     title: Text('${booking.room}'),
-                    subtitle: Text(
-                        'Date: ${booking.date}\nTime: ${booking.startTime} - ${booking.endTime}'),
-                    trailing: IconButton(
-                      icon: Icon(Icons.check),
-                      // onPressed: () {},
-                      onPressed: () => vm.updateBooking(
-                          id: '${booking.id}',
-                          data: Booking(
-                              id: '${booking.id}',
-                              date: '${booking.date}',
-                              startTime: '${booking.startTime}',
-                              endTime: '${booking.endTime}',
-                              approve: true)),
+                    subtitle: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Date:\t${booking.date}'),
+                        Text(
+                            'Time:\t${booking.startTime} - ${booking.endTime}'),
+                        Row(
+                          children: [
+                            Text('Status:\t'),
+                            booking.approve == true
+                                ? Text(
+                                    'APPROVED',
+                                    style: TextStyle(color: Colors.green),
+                                  )
+                                : Text(
+                                    'PENDING',
+                                    style: TextStyle(color: Colors.red),
+                                  )
+                          ],
+                        ),
+                      ],
                     ),
+                    trailing: booking.approve == true
+                        ? IconButton(
+                            icon: Icon(Icons.check_box, color: Colors.green, size: 30.0),
+                            //onPressed: () => UpdateBookingView(_index),
+                            onPressed: () {},
+                          )
+                        : IconButton(
+                            icon: Icon(Icons.check_box, size: 30.0),
+                            //onPressed: () => UpdateBookingView(_index),
+                            onPressed: () {},
+                          ),
                   ),
                 ),
               ],

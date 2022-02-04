@@ -2,8 +2,9 @@ import 'dart:async';
 
 import '../../models/user.dart';
 import '../../app/service_locator.dart';
-import '../../services/all_bookings/all_bookings_service.dart';
+// import '../../services/all_bookings/all_bookings_service.dart';
 import '../../models/booking.dart';
+import '../../services/booking/booking_service.dart';
 import '../viewmodel.dart';
 import '../../services/user/user_repository.dart';
 
@@ -11,7 +12,7 @@ class ApproveBookingViewmodel extends Viewmodel {
   List<Booking> _listBooking = [];
   // List<User> _listUser = [];
   // List<Booking> _listAllBookings = [];
-  final AllBookingsService _service = locator();
+  final BookingService _service = locator();
   StreamSubscription _streamObserver;
   bool get isObservingStream => _streamObserver != null;
 
