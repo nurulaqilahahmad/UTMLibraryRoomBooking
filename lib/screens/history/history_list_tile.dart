@@ -26,16 +26,40 @@ class HistoryListTile extends StatelessWidget {
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                   child: ListTile(
                     title: Text('${booking.room}'),
-                    subtitle: Text(
-                        'Date: ${booking.date}\nTime: ${booking.startTime} - ${booking.endTime}'),
-                    trailing: IconButton(
-                      icon: Icon(Icons.edit),
-                      //onPressed: () => UpdateBookingView(_index),
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UpdateBookingView(_index))),
+                    subtitle: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Date:\t${booking.date}'),
+                        Text(
+                            'Time:\t${booking.startTime} - ${booking.endTime}'),
+                        Row(
+                          children: [
+                            Text('Status:\t'),
+                            booking.approve == true
+                                ? Text(
+                                    'APPROVED',
+                                    style: TextStyle(color: Colors.green),
+                                  )
+                                : Text(
+                                    'PENDING',
+                                    style: TextStyle(color: Colors.red),
+                                  )
+                          ],
+                        ),
+                      ],
                     ),
+                    trailing: booking.approve == true
+                        ? null
+                        : IconButton(
+                            icon: Icon(Icons.edit),
+                            //onPressed: () => UpdateBookingView(_index),
+                            onPressed: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        UpdateBookingView(booking))),
+                          ),
                   ),
                 ),
               ],

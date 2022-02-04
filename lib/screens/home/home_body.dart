@@ -16,6 +16,9 @@ class HomeBody extends StatelessWidget {
           builder: (_, vm, __) => Expanded(
             child: Column(
               children: [
+                SizedBox(
+                  height: 30.0,
+                ),
                 Text(
                   "Welcome to",
                   style: TextStyle(
@@ -24,7 +27,7 @@ class HomeBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
                 Image(image: AssetImage('assets/utm-library-logo.png')),
                 // Icon(Icons.library_books),
@@ -37,6 +40,7 @@ class HomeBody extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
+                      mainAxisExtent: 256,
                     ),
                     itemCount: vm.dataCount,
                     itemBuilder: (_, index) => RoomListTile(index),
@@ -50,26 +54,3 @@ class HomeBody extends StatelessWidget {
     );
   }
 }
-
-// return TabBarView(
-//       children: [
-//         Container(
-//           child: Center(
-//             child: SelectorView<HomeViewmodel, int>(
-//               showProgressIndicator: false,
-//               selector: (_, vm) => vm.dataCount,
-//               builder: (_, vm, __, ___) => ListView.separated(
-//                 itemCount: vm.dataCount,
-//                 separatorBuilder: (_, __) => Divider(),
-//                 itemBuilder: (_, index) => RoomListTile(index),
-//               ),
-//             ),
-//           ),
-//         ),
-//         BookRoomView(),
-//         HistoryView(),
-//         Container(
-//           child: Text('Profile'),
-//         ),
-//       ],
-//     );

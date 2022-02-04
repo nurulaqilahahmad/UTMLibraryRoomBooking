@@ -8,7 +8,9 @@ import '../viewmodel.dart';
 import '../../services/user/user_repository.dart';
 
 class ApproveBookingViewmodel extends Viewmodel {
-  List<Booking> _listBooking;
+  List<Booking> _listBooking = [];
+  List<User> _listUser = [];
+  List<Booking> _listAllBookings = [];
   final AllBookingsService _service = locator();
   StreamSubscription _streamObserver;
   bool get isObservingStream => _streamObserver != null;
@@ -80,6 +82,11 @@ class ApproveBookingViewmodel extends Viewmodel {
 
   Booking getBooking(int index) =>
       _listBooking == null ? null : _listBooking[index];
+
+  Future<List<Booking>> getAllBookings() async {
+    _listAllBookings = await _service.fetchBookings();
+    return _listAllBookings;
+  }
 
   Future<void> signOut() async {
     _streamObserver?.cancel();

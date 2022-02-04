@@ -20,6 +20,9 @@ class AdminLoginBody extends StatelessWidget {
             children: [
               Column(
                 children: [
+                  const SizedBox(
+                    height: 30.0,
+                  ),
                   Text(
                     "Log In as Admin",
                     style: TextStyle(
@@ -28,7 +31,7 @@ class AdminLoginBody extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 30.0,
                   ),
                   _login("Email", false, _state.emailController),
                   _login("Password", true, _state.passwordController),

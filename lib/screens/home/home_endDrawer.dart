@@ -31,7 +31,7 @@ class HomeEndDrawer extends StatelessWidget {
               buildMenu(
                 text: 'Log Out',
                 icon: Icons.logout,
-                onClicked: () => vm.signOut,
+                onClicked: () => vm.signOut(),
               ),
               // const SizedBox(height: 10.0),
               Divider(),

@@ -50,6 +50,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/utm-library-logo.png
+    - assets/seminar.jfif
+    - assets/discussion.jfif
+    - assets/carrel.jfif
+    - assets/study.jpg
+    - assets/gallerium.jfif
+    - assets/seminar1.jfif
+    - assets/notavailable.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

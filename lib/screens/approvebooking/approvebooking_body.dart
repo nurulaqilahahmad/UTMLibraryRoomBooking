@@ -8,15 +8,29 @@ class ApproveBookingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SelectorView<ApproveBookingViewmodel, int>(
-        showProgressIndicator: false,
-        selector: (_, vm) => vm.dataCount,
-        builder: (_, vm, __, ___) => ListView.separated(
-          itemCount: vm.dataCount,
-          separatorBuilder: (_, __) => Divider(),
-          itemBuilder: (_, index) => BookingListTile(index),
+      child: View<ApproveBookingViewmodel>(
+        builder: (_, vm, __) => Center(
+          child: Column(
+            children: [
+              const SizedBox(height: 50.0),
+              SizedBox(
+                height: 50.0,
+                child:
+                    Text("Approve Booking", style: TextStyle(fontSize: 30.0)),
+              ),
+              const SizedBox(height: 10.0),
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: vm.dataCount,
+                  itemBuilder: (_, index) => BookingListTile(index),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
+      //),
     );
   }
 }

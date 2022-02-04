@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../adminhome/adminhome_view.dart';
 import '../adminprofile/adminprofile_view.dart';
 import '../home/home_view.dart';
 import '../view.dart';
@@ -21,7 +22,7 @@ class ApproveBookingDrawer extends StatelessWidget {
               buildMenu(
                 text: 'Home',
                 icon: Icons.home,
-                onClicked: () => Navigator.push(context, HomeView.route()),
+                onClicked: () => Navigator.push(context, AdminHomeView.route()),
               ),
               // const SizedBox(height: 10.0),
               Divider(),

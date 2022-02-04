@@ -1,53 +1,54 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-
-import '../login/login_view.dart';
+import '../view.dart';
 import '../profile/profile_view.dart';
+import 'updatebooking_viewmodel.dart';
 
 class UpdateBookingEndDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: Material(
-        color: Colors.red[900],
-        child: ListView(
-          children: [
-            const SizedBox(height: 10.0),
-            buildMenu(
-              text: 'Profile',
-              icon: Icons.person,
-              onClicked: () => Navigator.push(context, ProfileView.route()),
-            ),
-            // const SizedBox(height: 10.0),
-            Divider(),
-            buildMenu(
-              text: 'Reset Password',
-              icon: Icons.lock,
-              // onClicked: () => Navigator.push(context, ResetPasswordView.route()),
-            ),
-            // const SizedBox(height: 10.0),
-            Divider(),
-            buildMenu(
-              text: 'Log Out',
-              icon: Icons.logout,
-              onClicked: () => Navigator.push(context, LoginView.route()),
-            ),
-            // const SizedBox(height: 10.0),
-            Divider(),
-            // ListTile(
-            //   title: Text('Profile'),
-            //   onTap: () => Navigator.pushReplacementNamed(context, '/profile'),
-            // ),
-            // ListTile(
-            //   title: Text('Reset Password'),
-            //   onTap: () =>
-            //       Navigator.pushReplacementNamed(context, '/resetpassword'),
-            // ),
-            // ListTile(
-            //   title: Text('Log Out'),
-            //   onTap: () => Navigator.push(context, LoginView.route()),
-            // ),
-          ],
+    return View<UpdateBookingViewmodel>(
+      builder: (_, vm, __) => Drawer(
+        child: Material(
+          color: Colors.red[900],
+          child: ListView(
+            children: [
+              const SizedBox(height: 10.0),
+              buildMenu(
+                text: 'Profile',
+                icon: Icons.person,
+                onClicked: () => Navigator.push(context, ProfileView.route()),
+              ),
+              // const SizedBox(height: 10.0),
+              Divider(),
+              // buildMenu(
+              //   text: 'Reset Password',
+              //   icon: Icons.lock,
+              //   onClicked: () => Navigator.push(context, ResetPasswordView.route()),
+              // ),
+              // const SizedBox(height: 10.0),
+              Divider(),
+              buildMenu(
+                  text: 'Log Out',
+                  icon: Icons.logout,
+                  onClicked: () => vm.signOut()),
+              // const SizedBox(height: 10.0),
+              Divider(),
+              // ListTile(
+              //   title: Text('Profile'),
+              //   onTap: () => Navigator.pushReplacementNamed(context, '/profile'),
+              // ),
+              // ListTile(
+              //   title: Text('Reset Password'),
+              //   onTap: () =>
+              //       Navigator.pushReplacementNamed(context, '/resetpassword'),
+              // ),
+              // ListTile(
+              //   title: Text('Log Out'),
+              //   onTap: () => Navigator.push(context, LoginView.route()),
+              // ),
+            ],
+          ),
         ),
       ),
     );

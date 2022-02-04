@@ -15,10 +15,15 @@ class LoginBody extends StatelessWidget {
     return View<LoginViewmodel>(
       builder: (context, viewmodel, _) => Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0),
           child: ListView(
             children: [
+              SizedBox(
+                height: 30.0,
+              ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "Log In",
@@ -27,8 +32,8 @@ class LoginBody extends StatelessWidget {
                       fontSize: 26.0,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10.0,
+                  SizedBox(
+                    height: 30.0,
                   ),
                   _login("Email", false, _state.emailController),
                   _login("Password", true, _state.passwordController),
@@ -38,7 +43,7 @@ class LoginBody extends StatelessWidget {
                       style: TextStyle(color: Colors.red, fontSize: 20.0),
                     ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 30.0,
                   ),
                   LoginButton(viewmodel: viewmodel, state: _state),
                 ],

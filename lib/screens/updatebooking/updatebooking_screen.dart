@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:setup_mvvm/models/booking.dart';
-import 'package:setup_mvvm/screens/updatebooking/updatebooking_view.dart';
+import '../history/history_view.dart';
 import 'updatebooking_body.dart';
 import 'updatebooking_endDrawer.dart';
 import 'updatebooking_viewmodel.dart';
@@ -8,16 +8,16 @@ import 'updatebooking_appbar.dart';
 import 'updatebooking_drawer.dart';
 
 class UpdateBookingScreen extends StatefulWidget {
-  const UpdateBookingScreen(this._index);
-  final int _index;
+  const UpdateBookingScreen(this.booking);
+  final Booking booking;
 
   @override
-  UpdateBookingScreenState createState() => UpdateBookingScreenState(_index);
+  UpdateBookingScreenState createState() => UpdateBookingScreenState(booking);
 }
 
 class UpdateBookingScreenState extends State<UpdateBookingScreen> {
-  UpdateBookingScreenState(this._index);
-  final int _index;
+  UpdateBookingScreenState(this.booking);
+  final Booking booking;
 
   final dateController = TextEditingController();
   final startTimeController = TextEditingController();
@@ -29,32 +29,14 @@ class UpdateBookingScreenState extends State<UpdateBookingScreen> {
   String get endTime => endTimeController.text;
   String get room => roomController.text;
 
-  void onUpdate(UpdateBookingViewmodel viewmodel) async {
-    await viewmodel.updateBooking(
-        data: Booking(
-            date: date,
-            startTime: startTime,
-            endTime: endTime,
-            approve: false,
-            room: room));
-  }
-
   void onCancel() => Navigator.pop(context, null);
-
-  // void onDelete(UpdateBookingViewmodel viewmodel) {
-  //   viewmodel.removeBooking();
-  //   // dateController.clear();
-  //   // startTimeController.clear();
-  //   // endTimeController.clear();
-  //   // viewmodel.errorMessage = null;
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: UpdateBookingDrawer(),
       appBar: UpdateBookingAppbar(),
-      body: UpdateBookingBody(this, _index),
+      body: UpdateBookingBody(this, booking),
       endDrawer: UpdateBookingEndDrawer(),
     );
   }

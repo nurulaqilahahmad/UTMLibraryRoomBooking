@@ -9,8 +9,11 @@ abstract class AllBookingsService {
   final UserRepository _userRepository = locator();
   User get user => _userRepository.user;
 
+  Future<List<User>> fetchUsers();
+  Future<User> getUser(uid);
   Future<List<Booking>> fetchBookings();
   Future<Booking> getBooking(id);
+  // Future<Booking> getAllBookings();
   Future<Booking> updateBooking({id, Booking data});
   Future<void> removeBooking(id);
   Future<Booking> addBooking(Booking data);

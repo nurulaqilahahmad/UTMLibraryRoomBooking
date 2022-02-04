@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../view.dart';
 import 'adminprofile_viewmodel.dart';
 
-class AdminHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
+class AdminProfileAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(50.0);
 

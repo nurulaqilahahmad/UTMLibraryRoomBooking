@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../adminhome/adminhome_view.dart';
 import '../adminprofile/adminprofile_view.dart';
 import '../approvebooking/approvebooking_view.dart';
 import 'adminprofile_viewmodel.dart';
-import '../home/home_view.dart';
 import '../view.dart';
 
-class AdminHomeDrawer extends StatelessWidget {
+class AdminProfileDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return View<AdminProfileViewmodel>(
@@ -21,7 +21,7 @@ class AdminHomeDrawer extends StatelessWidget {
               buildMenu(
                 text: 'Home',
                 icon: Icons.home,
-                onClicked: () => Navigator.push(context, HomeView.route()),
+                onClicked: () => Navigator.push(context, AdminHomeView.route()),
               ),
               // const SizedBox(height: 10.0),
               Divider(),
