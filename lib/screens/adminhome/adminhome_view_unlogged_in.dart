@@ -30,8 +30,9 @@ class AdminHomeViewUnloggedIn extends StatelessWidget {
             const SizedBox(height: 30),
             Text(
               'Log In as Admin',
-              style: TextStyle(fontSize: 26.0),
+              style: TextStyle(fontSize: 26.0, color: Colors.black),
             ),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
