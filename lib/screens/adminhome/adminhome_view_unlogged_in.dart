@@ -28,32 +28,41 @@ class AdminHomeViewUnloggedIn extends StatelessWidget {
           children: [
             const Image(image: AssetImage('assets/utm-library-logo.png')),
             const SizedBox(height: 30),
-            SizedBox(
-              height: 30,
-              child: View<AdminLoginViewmodel>(
-                builder: (_, vm, __) => ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    onSurface: Colors.transparent,
-                    primary: Colors.red[900],
-                  ),
-                  child: Text('NEXT   >'),
-                  onPressed: () => _openLoginScreen(context),
-                ),
-              ),
+            Text(
+              'Log In as Admin',
+              style: TextStyle(fontSize: 26.0),
             ),
-            const SizedBox(height: 30),
-            SizedBox(
-              height: 30,
-              child: View<LoginViewmodel>(
-                builder: (_, vm, __) => ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    onSurface: Colors.transparent,
-                    primary: Colors.red[900],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                  child: View<AdminLoginViewmodel>(
+                    builder: (_, vm, __) => ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onSurface: Colors.transparent,
+                        primary: Colors.red[900],
+                      ),
+                      child: Text('<  BACK'),
+                      onPressed: () => _backToWelcome(context),
+                    ),
                   ),
-                  child: Text('<   BACK'),
-                  onPressed: () => _backToWelcome(context),
                 ),
-              ),
+                const SizedBox(width: 30),
+                SizedBox(
+                  height: 30,
+                  child: View<LoginViewmodel>(
+                    builder: (_, vm, __) => ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        onSurface: Colors.transparent,
+                        primary: Colors.red[900],
+                      ),
+                      child: Text('NEXT   >'),
+                      onPressed: () => _openLoginScreen(context),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

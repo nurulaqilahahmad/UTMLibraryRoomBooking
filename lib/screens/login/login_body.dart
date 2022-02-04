@@ -26,7 +26,7 @@ class LoginBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Log In",
+                    "Log In as Student",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 26.0,

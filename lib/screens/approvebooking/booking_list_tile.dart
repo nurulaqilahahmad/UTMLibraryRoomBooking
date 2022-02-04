@@ -28,15 +28,15 @@ class BookingListTile extends StatelessWidget {
                         'Date: ${booking.date}\nTime: ${booking.startTime} - ${booking.endTime}'),
                     trailing: IconButton(
                       icon: Icon(Icons.check),
-                      onPressed: () {},
-                      // onPressed: () => vm.updateBooking(
-                      //     id: '${booking.id}',
-                      //     data: Booking(
-                      //         id: '${booking.id}',
-                      //         date: '${booking.date}',
-                      //         startTime: '${booking.startTime}',
-                      //         endTime: '${booking.endTime}',
-                      //         approve: true)),
+                      // onPressed: () {},
+                      onPressed: () => vm.updateBooking(
+                          id: '${booking.id}',
+                          data: Booking(
+                              id: '${booking.id}',
+                              date: '${booking.date}',
+                              startTime: '${booking.startTime}',
+                              endTime: '${booking.endTime}',
+                              approve: true)),
                     ),
                   ),
                 ),

@@ -9,8 +9,8 @@ import '../../services/user/user_repository.dart';
 
 class ApproveBookingViewmodel extends Viewmodel {
   List<Booking> _listBooking = [];
-  List<User> _listUser = [];
-  List<Booking> _listAllBookings = [];
+  // List<User> _listUser = [];
+  // List<Booking> _listAllBookings = [];
   final AllBookingsService _service = locator();
   StreamSubscription _streamObserver;
   bool get isObservingStream => _streamObserver != null;
