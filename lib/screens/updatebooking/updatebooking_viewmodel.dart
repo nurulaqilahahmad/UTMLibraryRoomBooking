@@ -15,7 +15,7 @@ class UpdateBookingViewmodel extends Viewmodel {
   StreamSubscription _streamObserver;
   bool get isObservingStream => _streamObserver != null;
 
-    List<Room> _list = [];
+  List<Room> _list = [];
   final RoomService _serviceRoom = locator();
   StreamSubscription _streamObserverRoom;
   bool get isObservingStreamRoom => _streamObserverRoom != null;
@@ -35,6 +35,10 @@ class UpdateBookingViewmodel extends Viewmodel {
     });
   }
 
+  String _errorMessage;
+  String get errorMessage => _errorMessage;
+  set errorMessage(value) => update(() => _errorMessage = value);
+
   @override
   void init() async => await update(() async {
         if (user == null) return;
@@ -47,7 +51,7 @@ class UpdateBookingViewmodel extends Viewmodel {
                     .toList()),
             onError: (e) => print(e));
 
-            _list = await _serviceRoom.fetchRooms();
+        _list = await _serviceRoom.fetchRooms();
         _streamObserverRoom = _serviceRoom.observeStream(
             onData: (receivedData) async => await update(() async => _list =
                 (receivedData.docs as List)
@@ -85,16 +89,24 @@ class UpdateBookingViewmodel extends Viewmodel {
         _listBooking.removeWhere((booking) => booking.id == id);
       });
 
-  Future<void> updateBooking({dynamic id, Booking data}) async =>
+  Future<void> updateBooking({dynamic id, Booking data}) async {
+    if((data.date).contains(RegExp(r'[0-9]')) && (data.startTime).contains(RegExp(r'[0-9]')) && (data.endTime).contains(RegExp(r'[0-9]'))){
       await update(() async {
         final Booking dbBooking =
             await _service.updateBooking(id: id, data: data);
+            if(_service != null)
+              _errorMessage = null;
+            else
+              _errorMessage = 'ERROR! Invalid format!';
         final index =
             _listBooking.indexWhere((booking) => booking.id == dbBooking.id);
         if (index == -1) return;
 
-        if (!isObservingStream) _listBooking[index] = dbBooking;
+        if (!isObservingStream) _listBooking[index] = dbBooking;        
       });
+    }
+      
+  }
 
   Booking getBooking(int index) =>
       _listBooking == null ? null : _listBooking[index];

@@ -16,7 +16,7 @@ class AvailableRoomListTile extends StatelessWidget {
       builder: (context, vm, room, __) => Row(
         children: [
           Icon(Icons.circle, size: 15.0, color: room.status == true ? Colors.green : Colors.red,),
-          Text('\t\t${room.name}'),
+          Text('\t\t${room.name}', style: room.status == true ? TextStyle(color: Colors.black) : TextStyle(color: Colors.grey)),
         ],
       ),
     );

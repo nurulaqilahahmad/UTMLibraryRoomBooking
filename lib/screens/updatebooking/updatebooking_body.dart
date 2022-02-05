@@ -46,27 +46,35 @@ class UpdateBookingBody extends StatelessWidget {
                     height: 10.0,
                   ),
                   Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        title: Text('Room List', textAlign: TextAlign.center,),
-                        subtitle: Expanded(
-                          child: GridView.builder(
-                            shrinkWrap: true,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisExtent: 20,
-                            ),
-                            itemCount: vm.roomDataCount,
-                            itemBuilder: (context, index) =>
-                                AvailableRoomListTile(index),
+                    color: Colors.white,
+                    child: ListTile(
+                      title: Text(
+                        'Room List',
+                        textAlign: TextAlign.center,
+                      ),
+                      subtitle: Expanded(
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisExtent: 20,
                           ),
+                          itemCount: vm.roomDataCount,
+                          itemBuilder: (context, index) =>
+                              AvailableRoomListTile(index),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10.0,
+                  ),
+                  if (vm.errorMessage != null)
+                    Text(
+                      vm.errorMessage,
+                      style: TextStyle(color: Colors.red, fontSize: 20.0),
                     ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -120,20 +128,8 @@ class UpdateBookingBody extends StatelessWidget {
                           }),
                     ],
                   ),
-                  // UpdateBookingButton(viewmodel: vm, state: _state),
                 ],
               ),
-
-              // Expanded(
-              //   child: ListView.separated(
-              //     itemCount: vm.dataCount,
-              //     separatorBuilder: (context, __) => Divider(
-              //       color: Colors.white,
-              //     ),
-              //     itemBuilder: (context, index) =>
-              //         UpdateBookingListTile(_state, _index),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -161,7 +157,7 @@ Widget _updateBooking(String title, String hint, TextEditingController state) {
         decoration: InputDecoration(
           hintText: hint,
         ),
-        controller: state == null ? hint : state, 
+        controller: state == null ? hint : state,
       ),
       SizedBox(
         height: 10.0,

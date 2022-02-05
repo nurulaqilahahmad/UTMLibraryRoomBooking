@@ -1,20 +1,31 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../models/user.dart';
 import '../../app/service_locator.dart';
-// import '../../services/all_bookings/all_bookings_service.dart';
 import '../../models/booking.dart';
 import '../../services/booking/booking_service.dart';
+import '../../services/firebase.dart';
+import '../../services/user/user_service.dart';
 import '../viewmodel.dart';
 import '../../services/user/user_repository.dart';
 
 class ApproveBookingViewmodel extends Viewmodel {
   List<Booking> _listBooking = [];
-  // List<User> _listUser = [];
-  // List<Booking> _listAllBookings = [];
   final BookingService _service = locator();
   StreamSubscription _streamObserver;
   bool get isObservingStream => _streamObserver != null;
+
+  final _serviceUser = locator<UserService>();
+  List<User> _listUser;
+  StreamSubscription _streamObserverUser;
+  bool get isObservingStreamUser => _streamObserverUser != null;
+
+  final _firestore = Firestore();
+
+  CollectionReference get _collection =>
+      _firestore.collection('bookings');
 
   final UserRepository _userRepository = locator();
   User get user => _userRepository.user;
@@ -23,6 +34,7 @@ class ApproveBookingViewmodel extends Viewmodel {
     _userRepository.addListener(() {
       if (user == null) {
         _listBooking = null;
+        _listUser = null;
       } else {
         init();
       }
@@ -42,6 +54,14 @@ class ApproveBookingViewmodel extends Viewmodel {
                     .toList()),
             onError: (e) => print(e));
 
+            _listUser = await _serviceUser.fetchUsers();
+        _streamObserverUser = _serviceUser.observeStream(
+            onData: (receivedData) async => await update(() async => _listUser =
+                (receivedData.docs as List)
+                    .map((doc) => User.fromJson(doc.data()))
+                    .toList()),
+            onError: (e) => print(e));
+
         super.init();
       });
 
@@ -53,6 +73,17 @@ class ApproveBookingViewmodel extends Viewmodel {
   }
 
   int get dataCount => _listBooking == null ? 0 : _listBooking.length;
+  int get userDataCount => _listUser == null ? 0 : _listUser.length;
+
+  Future fetchBookings() async{
+    final snapshot = await _collection.get();
+    return snapshot.docs.map((doc) {
+      final booking = Booking.fromJson(doc.data()).copyWith(
+          id: doc
+              .id); // transform data. Field id might be null, so take the doc id instead
+      return booking;
+    }).toList();
+  }
 
   Future<void> addBooking(Booking booking) async => await update(() async {
         if (user == null) return;
@@ -83,6 +114,8 @@ class ApproveBookingViewmodel extends Viewmodel {
 
   Booking getBooking(int index) =>
       _listBooking == null ? null : _listBooking[index];
+
+  User getUser(int index) => _listUser == null ? null : _listUser[index];
 
   // Future<List<Booking>> getAllBookings(int index) async {
   //   _listAllBookings = await _service.fetchBookings();
