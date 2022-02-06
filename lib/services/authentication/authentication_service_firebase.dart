@@ -42,10 +42,6 @@ class AuthenticationServiceFirebase extends AuthenticationService {
     }
   }
 
-  // Commenting the following code out means, do not use auth stream from Firebase
-  // @override
-  // Stream get stream => _auth.authStateChanges();
-
   @override
   AppUser.User transformUserData(dynamic userData) {
     if (userData == null) return null;

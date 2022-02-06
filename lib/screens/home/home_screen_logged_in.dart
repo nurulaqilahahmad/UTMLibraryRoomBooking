@@ -17,39 +17,3 @@ class HomeScreenLoggedIn extends StatelessWidget {
     );
   }
 }
-// class HomeScreenLoggedIn extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return DefaultTabController(
-//       length: 4,
-//       initialIndex: 1,
-//       child: Scaffold(
-//         appBar: AppBar(
-//           elevation: 0.0,
-//           title: Text('UTM Library'),
-//           actions: [
-//             Builder(
-//               builder: (context) {
-//                 return IconButton(
-//                   icon: Icon(Icons.person),
-//                   onPressed: () {
-//                     Scaffold.of(context).openEndDrawer();
-//                   },
-//                 );
-//               },
-//             )
-//           ],
-//           backgroundColor: Colors.red[900],
-//           bottom: TabBar(tabs: [
-//             Tab(text: 'HOME', icon: Icon(Icons.home)),
-//             Tab(text: 'BOOKING', icon: Icon(Icons.bookmark_add)),
-//             Tab(text: 'HISTORY', icon: Icon(Icons.history)),
-//             Tab(text: 'PROFILE', icon: Icon(Icons.person)),
-//           ]),
-//         ),
-//         body: HomeBody(),
-//       ),
-//     );
-//   }
-// }
-
